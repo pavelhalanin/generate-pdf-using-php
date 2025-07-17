@@ -39,12 +39,17 @@ try {
     // > > > > > > > >
 
     $html = GetTtnHtml::getHtml([
+        'text_color' => $_POST['text_color'],
         'ttn_date' => TtnDateHelper::getTtnDate_byIsoDate($_POST['ttn_date']),
         'unp_gruzootpravitel' => $_POST['unp_gruzootpravitel'],
         'unp_gruzopoluchatel' => $_POST['unp_gruzopoluchatel'],
         'unp_zakazchik_auto' => $_POST['unp_zakazchik_auto'],
-        'automobil' => isset($_POST['automobil']) && strlen($_POST['automobil']) > 0 ? $_POST['automobil'] : "&nbsp;",
-        'pricep' => isset($_POST['pricep']) && strlen($_POST['pricep']) > 0 ? $_POST['pricep'] : "&nbsp;",
+        'automobil' => GetTtnHtml::getParamOrOnNotIssetReturnEmptySymbol('automobil'),
+        'pricep' => GetTtnHtml::getParamOrOnNotIssetReturnEmptySymbol('pricep'),
+        'k_putevomy_listy' => GetTtnHtml::getParamOrOnNotIssetReturnEmptySymbol('k_putevomy_listy'),
+        'voditel' => GetTtnHtml::getParamOrOnNotIssetReturnEmptySymbol('voditel'),
+        'name_1_zakazchik' => GetTtnHtml::getParamOrOnNotIssetReturnEmptySymbol('name_1_zakazchik'),
+        'name_2_zakazchik' => GetTtnHtml::getParamOrOnNotIssetReturnEmptySymbol('name_2_zakazchik'),
     ]);
     $mpdf->WriteHTML($html);
     $result_pdf_name = date('Y-m-d_H-i-s') . '_TTN_test.pdf';

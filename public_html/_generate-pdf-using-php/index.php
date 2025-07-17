@@ -12,6 +12,10 @@
     </select>
 
     <form id="ph_form" action="/_generate-pdf-using-php/api/v1/generator-pdf/use-template-pdf" method="post">
+        <select name="text_color">
+            <option value="black">черный</option>
+            <option value="red">красный</option>
+        </select>
         <p>
             <input type="date" name="ttn_date" value="2024-02-13" />
         </p>
@@ -21,8 +25,14 @@
             <input type="number" name="unp_zakazchik_auto" value="123456789" placeholder="Заказчик автомобильной перевозки (плательщик)" />
         </p>
         <p>
-            <input type="text" name="automobil" value="Фольксваген" placeholder="Автомобиль" />
+            <input type="text" name="automobil" value="ГАЗ 1234" placeholder="Автомобиль" />
             <input type="text" name="pricep" value="" placeholder="Прицеп" />
+        </p>
+        <p>
+            <input type="text" name="k_putevomy_listy" value="1234 от 01.01.2025" placeholder="К путевому листу" />
+        </p>
+        <p>
+            <input type="text" name="voditel" value="Иванов Иван Иванович" placeholder="Водитель" />
         </p>
         <button name="submit">Сгенерировать PDF</button>
     </form>
