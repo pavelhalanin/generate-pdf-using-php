@@ -3,9 +3,9 @@
 try {
     $HOME = strlen($_SERVER['DOCUMENT_ROOT']) != 0 ? $_SERVER['DOCUMENT_ROOT'] : '';
 
-    include_once "$HOME/libs/mpdf/vendor/autoload.php";
-    include_once "$HOME/api/v1/generator-pdf/GetTtnHtml.php";
-    include_once "$HOME/helpers/TtnDateHelper.php";
+    include_once "$HOME/_generate-pdf-using-php/libs/mpdf/vendor/autoload.php";
+    include_once "$HOME/_generate-pdf-using-php/api/v1/generator-pdf/GetTtnHtml.php";
+    include_once "$HOME/_generate-pdf-using-php/helpers/TtnDateHelper.php";
 
     if (!isset($_POST['submit'])) {
         http_response_code(400);
@@ -24,20 +24,6 @@ try {
         'margin_footer' => 0,
     ]);
 
-    // < < < < < < < < Редактирование существующего PDF (можно удалить)
-    $pdf_template = "$HOME/templates/ttn1.pdf";
-
-    if (!file_exists($pdf_template)) {
-        http_response_code(500);
-        echo "Не наден шаблон PDF файла, для его открытия по пути: '$pdf_template'";
-        exit;
-    }
-
-    $mpdf->SetSourceFile($pdf_template);
-    $template_id = $mpdf->ImportPage(1);
-    $mpdf->UseTemplate($template_id);
-    // > > > > > > > >
-
     $html = GetTtnHtml::getHtml([
         'ttn_date' => TtnDateHelper::getTtnDate_byIsoDate($_POST['ttn_date']),
         'unp_gruzootpravitel' => $_POST['unp_gruzootpravitel'],
@@ -47,7 +33,7 @@ try {
         'pricep' => isset($_POST['pricep']) && strlen($_POST['pricep']) > 0 ? $_POST['pricep'] : "&nbsp;",
     ]);
     $mpdf->WriteHTML($html);
-    $result_pdf_name = date('Y-m-d_H-i-s') . '_TTN_test.pdf';
+    $result_pdf_name = date('Y-m-d_H-i-s') . '_TTN.pdf';
     $mpdf->Output($result_pdf_name, "D");
 }
 catch(Throwable $exception) {

@@ -6,8 +6,8 @@
     <title>Форма генерации PDF</title>
 </head>
 <body>
-    <form action="/api/v1/generator-pdf/use-template-pdf" method="post">
-    <!-- <form action="/api/v1/generator-pdf/not-use-template-pdf" method="post"> -->
+    <form action="/_generate-pdf-using-php/api/v1/generator-pdf/use-template-pdf" method="post">
+    <!-- <form action="/_generate-pdf-using-php/api/v1/generator-pdf/not-use-template-pdf" method="post"> -->
         <p>
             <input type="date" name="ttn_date" value="2024-02-13" />
         </p>
