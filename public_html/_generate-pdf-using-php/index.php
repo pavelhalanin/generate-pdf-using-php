@@ -6,8 +6,12 @@
     <title>Форма генерации PDF</title>
 </head>
 <body>
-    <form action="/_generate-pdf-using-php/api/v1/generator-pdf/use-template-pdf" method="post">
-    <!-- <form action="/_generate-pdf-using-php/api/v1/generator-pdf/not-use-template-pdf" method="post"> -->
+    <select id="ph_select">
+        <option value="/_generate-pdf-using-php/api/v1/generator-pdf/use-template-pdf">ТТН поверх ТТН OZON</option>
+        <option value="/_generate-pdf-using-php/api/v1/generator-pdf/not-use-template-pdf">ТТН пустая</option>
+    </select>
+
+    <form id="ph_form" action="/_generate-pdf-using-php/api/v1/generator-pdf/use-template-pdf" method="post">
         <p>
             <input type="date" name="ttn_date" value="2024-02-13" />
         </p>
@@ -22,5 +26,14 @@
         </p>
         <button name="submit">Сгенерировать PDF</button>
     </form>
+
+    <script>
+        const FORM = document.getElementById('ph_form');
+        const SELECT = document.getElementById('ph_select');
+
+        SELECT.addEventListener("change", function () {
+            FORM.action = this.value;
+        });
+    </script>
 </body>
 </html>
