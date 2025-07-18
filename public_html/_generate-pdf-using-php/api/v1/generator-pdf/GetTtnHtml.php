@@ -1,188 +1,20 @@
 <?php
 
+$HOME = strlen($_SERVER['DOCUMENT_ROOT']) != 0 ? $_SERVER['DOCUMENT_ROOT'] : '';
+
 class GetTtnHtml {
     static function getParamOrOnNotIssetReturnEmptySymbol($param) {
         return isset($_POST["$param"]) && strlen($_POST["$param"]) > 0 ? $_POST["$param"] : "&nbsp;";
     }
 
     static function getHtml($params = []) {
+        global $HOME;
         $text_color = "red";
 
         ob_start();
-
-        ?>
-
-            <div style="padding-left: 0.7cm; width: 19.6cm;">
-
-                <?php
-
-                GetTtnHtml::echoUnpSection($params);
-                GetTtnHtml::echoDateSection($params);
-                GetTtnHtml::echoAutoSection($params);
-                GetTtnHtml::echoPutevojListSection($params);
-                GetTtnHtml::echoVoditelSection($params);
-                GetTtnHtml::echoNameZakazhikSection($params);
-
-                ?>
-
-            </div>
-
-        <?php
-
+        include_once "$HOME/_generate-pdf-using-php/api/v1/generator-pdf/ttn2016.php";
         $data = ob_get_clean();
+
         return $data;
-    }
-
-    static function echoUnpSection($params) {
-
-        ?>
-
-        <div style="padding-top: 0.7cm; padding-left: 4.6cm;">
-            <table style="border-collapse: collapse;">
-                <tr>
-                    <td style="color: <?= $params['text_color'] ?>; text-align: center;" height="34" width="32">
-                        &nbsp;
-                    </td>
-                    <td style="color: <?= $params['text_color'] ?>; text-align: center; border: 1px solid <?= $params['text_color'] ?>;" height="34" width="128">
-                        Грузоотправитель
-                    </td>
-                    <td style="color: <?= $params['text_color'] ?>; text-align: center; border: 1px solid <?= $params['text_color'] ?>;" height="34" width="126">
-                        Грузополучатель
-                    </td>
-                    <td style="color: <?= $params['text_color'] ?>; text-align: center; border: 1px solid <?= $params['text_color'] ?>;" height="34" width="128">
-                        Заказчик автомобильной<br/>перевозки (плательщик)
-                    </td>
-                </tr>
-                <tr>
-                    <td style="color: <?= $params['text_color'] ?>; text-align: center;" height="24">
-                        УНП
-                    </td>
-                    <td style="color: <?= $params['text_color'] ?>; text-align: center; border: 1px solid <?= $params['text_color'] ?>;" height="24">
-                        <?= $params['unp_gruzootpravitel'] ?>
-                    </td>
-                    <td style="color: <?= $params['text_color'] ?>; text-align: center; border: 1px solid <?= $params['text_color'] ?>;" height="24">
-                        <?= $params['unp_gruzopoluchatel'] ?>
-                    </td>
-                    <td style="color: <?= $params['text_color'] ?>; text-align: center; border: 1px solid <?= $params['text_color'] ?>;" height="24">
-                        <?= $params['unp_zakazchik_auto'] ?>
-                    </td>
-                </tr>
-            </table>
-        </div>
-
-        <?php
-
-    }
-
-    static function echoDateSection($params) {
-
-        ?>
-
-        <div style="color: <?= $params['text_color'] ?>; padding-top: 2.8cm;">
-            <?= $params['ttn_date'] ?>
-        </div>
-
-        <?php
-
-    }
-
-    static function echoAutoSection($params) {
-
-        ?>
-
-        <div>
-            <div style="margin-top: -0.05cm;">
-                <div style="color: <?= $params['text_color'] ?>; display: block; float: left; width: 1.5cm;">Автомобиль</div>
-
-                <div style="color: <?= $params['text_color'] ?>; display: block; float: left; width: 8.3cm; margin-left: 0.1cm; border-bottom: 1px solid <?= $params['text_color'] ?>;">
-                    <?= $params['automobil'] ?>
-                </div>
-
-                <div style="color: <?= $params['text_color'] ?>; display: block; float: left; width: 0.95cm; margin-left: 0.3cm;">Прицеп</div>
-
-                <div style="color: <?= $params['text_color'] ?>; display: block; float: left; width: 8.4cm; margin-left: 0.1cm; border-bottom: 1px solid <?= $params['text_color'] ?>;">
-                    <?= $params['pricep'] ?>
-                </div>
-            </div>
-            <div>
-                <div style="color: <?= $params['text_color'] ?>; display: block; float: left; width: 1.5cm; text-align: center; font-style: italic; font-size: 7px;">&nbsp;</div>
-
-                <div style="color: <?= $params['text_color'] ?>; display: block; float: left; width: 8.3cm; margin-left: 0.1cm; text-align: center; font-style: italic; font-size: 7px;">(марка, государственный номер)</div>
-
-                <div style="color: <?= $params['text_color'] ?>; display: block; float: left; width: 0.95cm; margin-left: 0.3cm; text-align: center; font-style: italic; font-size: 7px;">&nbsp;</div>
-
-                <div style="color: <?= $params['text_color'] ?>; display: block; float: left; width: 8.4cm; margin-left: 0.1cm; text-align: center; font-style: italic; font-size: 7px;">(марка, государственный номер)</div>
-            </div>
-        </div>
-
-        <?php
-
-    }
-
-    static function echoPutevojListSection($params) {
-
-        ?>
-
-        <div>
-            <div style="color: <?= $params['text_color'] ?>; display: block; float: left; width: 2.4cm;">К путевому листу №</div>
-
-            <div style="color: <?= $params['text_color'] ?>; display: block; float: left; width: 17.15cm; margin-left: 0.1cm; border-bottom: 1px solid <?= $params['text_color'] ?>;">
-                <?= $params['k_putevomy_listy'] ?>
-            </div>
-        </div>
-
-        <?php
-
-    }
-
-    static function echoVoditelSection($params) {
-
-        ?>
-
-        <div>
-            <div>
-                <div style="color: <?= $params['text_color'] ?>; display: block; float: left; width: 1.1cm;">Водитель</div>
-
-                <div style="color: <?= $params['text_color'] ?>; display: block; float: left; width: 18.45cm; margin-left: 0.1cm; border-bottom: 1px solid <?= $params['text_color'] ?>;">
-                    <?= $params['voditel'] ?>
-                </div>
-            </div>
-            <div>
-                <div style="color: <?= $params['text_color'] ?>; display: block; float: left; width: 1.1cm; text-align: center; font-style: italic; font-size: 7px;">&nbsp;</div>
-
-                <div style="color: <?= $params['text_color'] ?>; display: block; float: left; width: 18.45cm; margin-left: 0.1cm;  text-align: center; font-style: italic; font-size: 7px;">
-                    (фамилия и инициалы)
-                </div>
-            </div>
-        </div>
-
-        <?php
-
-    }
-
-    static function echoNameZakazhikSection($params) {
-
-        ?>
-
-        <div>
-            <div>
-                <div style="color: <?= $params['text_color'] ?>; display: block; float: left; width: 5.95cm;">Заказчик автомобильной перевозки (плательщик)</div>
-
-                <div style="color: <?= $params['text_color'] ?>; display: block; float: left; width: 13.645cm; margin-left: 0.1cm; border-bottom: 1px solid <?= $params['text_color'] ?>;">
-                    <?= $params['name_1_zakazchik'] ?>
-                </div>
-            </div>
-            <div>
-                <div style="color: <?= $params['text_color'] ?>; display: block; float: left; width: 19.65cm; border-bottom: 1px solid <?= $params['text_color'] ?>;">
-                    <?= $params['name_2_zakazchik'] ?>
-                </div>
-                <div style="color: <?= $params['text_color'] ?>; display: block; float: left; width: 19.65cm; text-align: center; font-style: italic; font-size: 7px;">
-                    (наименование, адрес)
-                </div>
-            </div>
-        </div>
-
-        <?php
-
     }
 }
