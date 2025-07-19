@@ -1,3 +1,9 @@
+<?php
+
+$italic_size = '6.9px';
+
+?>
+
 <div style="padding-left: 0.7cm; width: 19.6cm;">
     <!-- < < < < < < < < УНП -->
     <div style="padding-top: 0.7cm; padding-left: 4.6cm;">
@@ -97,9 +103,7 @@
             color: <?= $params['text_color'] ?>;
             padding-top: 2.8cm;
         "
-    >
-        <?= $params['ttn_date'] ?>
-    </div>
+    ><?= $params['ttn_date_string'] ?></div>
     <!-- > > > > > > > > Дата -->
     <!-- < < < < < < < < Авто -->
     <div>
@@ -166,7 +170,7 @@
                     width: 1.5cm;
                     text-align: center;
                     font-style: italic;
-                    font-size: 7px;
+                    font-size: <?= $italic_size ?>;
                 "
             >
                 &nbsp;
@@ -181,7 +185,7 @@
                     margin-left: 0.1cm;
                     text-align: center;
                     font-style: italic;
-                    font-size: 7px;
+                    font-size: <?= $italic_size ?>;
                 "
             >
                 (марка, государственный номер)
@@ -196,7 +200,7 @@
                     margin-left: 0.3cm;
                     text-align: center;
                     font-style: italic;
-                    font-size: 7px;
+                    font-size: <?= $italic_size ?>;
                 "
             >
                 &nbsp;
@@ -211,7 +215,7 @@
                     margin-left: 0.1cm;
                     text-align: center;
                     font-style: italic;
-                    font-size: 7px;
+                    font-size: <?= $italic_size ?>;
                 "
             >
                 (марка, государственный номер)
@@ -282,7 +286,7 @@
                     width: 1.1cm;
                     text-align: center;
                     font-style: italic;
-                    font-size: 7px;
+                    font-size: <?= $italic_size ?>;
                 "
             >
                 &nbsp;
@@ -297,7 +301,7 @@
                     margin-left: 0.1cm;
                     text-align: center;
                     font-style: italic;
-                    font-size: 7px;
+                    font-size: <?= $italic_size ?>;
                 "
             >
                 (фамилия и инициалы)
@@ -351,7 +355,7 @@
                     width: 19.65cm;
                     text-align: center;
                     font-style: italic;
-                    font-size: 7px;
+                    font-size: <?= $italic_size ?>;
                 "
             >
                 (наименование, адрес)
@@ -359,4 +363,203 @@
         </div>
     </div>
     <!-- > > > > > > > > Заказчик -->
+    <!-- < < < < < < < < Грузоотправитель -->
+    <div>
+        <div>
+            <div
+                style="
+                    color: <?= $params['text_color'] ?>;
+                    display: block;
+                    float: left;
+                    width: 2.20cm;
+                "
+            >
+                Грузоотправитель
+            </div>
+
+            <div
+                style="
+                    color: <?= $params['text_color'] ?>;
+                    display: block;
+                    float: left;
+                    width: 17.295cm;
+                    margin-left: 0.1cm;
+                    border-bottom: 1px solid <?= $params['text_color'] ?>;
+                ">
+                <?= $params['name_gruzootpravitel'] ?>
+            </div>
+        </div>
+        <div>
+            <div
+                style="
+                    color: <?= $params['text_color'] ?>;
+                    display: block;
+                    float: left;
+                    width: 2.20cm;
+                    text-align: center;
+                    font-style: italic;
+                    font-size: <?= $italic_size ?>;
+                "
+            >
+                &nbsp;
+            </div>
+            <div
+                style="
+                    color: <?= $params['text_color'] ?>;
+                    display: block;
+                    float: left;
+                    width: 17.295cm;
+                    margin-left: 0.1cm;
+                    text-align: center;
+                    font-style: italic;
+                    font-size: <?= $italic_size ?>;
+                "
+            >
+                (наименование, адрес)
+            </div>
+        </div>
+    </div>
+    <!-- > > > > > > > > Грузоотправитель -->
+    <!-- < < < < < < < < Грузополучатель -->
+    <div>
+        <div>
+            <div
+                style="
+                    color: <?= $params['text_color'] ?>;
+                    display: block;
+                    float: left;
+                    width: 2.10cm;
+                "
+            >
+                Грузополучатель
+            </div>
+
+            <div
+                style="
+                    color: <?= $params['text_color'] ?>;
+                    display: block;
+                    float: left;
+                    width: 17.395cm;
+                    margin-left: 0.1cm;
+                    border-bottom: 1px solid <?= $params['text_color'] ?>;
+                ">
+                <?= $params['name_gruzopoluchatel'] ?>
+            </div>
+        </div>
+        <div>
+            <div
+                style="
+                    color: <?= $params['text_color'] ?>;
+                    display: block;
+                    float: left;
+                    width: 2.10cm;
+                    text-align: center;
+                    font-style: italic;
+                    font-size: <?= $italic_size ?>;
+                "
+            >
+                &nbsp;
+            </div>
+            <div
+                style="
+                    color: <?= $params['text_color'] ?>;
+                    display: block;
+                    float: left;
+                    width: 17.395cm;
+                    margin-left: 0.1cm;
+                    text-align: center;
+                    font-style: italic;
+                    font-size: <?= $italic_size ?>;
+                "
+            >
+                (наименование, адрес)
+            </div>
+        </div>
+    </div>
+    <!-- > > > > > > > > Грузополучатель -->
+    <!-- < < < < < < < < Основание отпуска -->
+    <div>
+        <div>
+            <div
+                style="
+                    color: <?= $params['text_color'] ?>;
+                    display: block;
+                    float: left;
+                    width: 2.40cm;
+                "
+            >
+                Основание отпуска
+            </div>
+
+            <div
+                style="
+                    color: <?= $params['text_color'] ?>;
+                    display: block;
+                    float: left;
+                    width: 17.095cm;
+                    margin-left: 0.1cm;
+                    border-bottom: 1px solid <?= $params['text_color'] ?>;
+                ">
+                <?= $params['name_gruzopoluchatel'] ?>
+            </div>
+        </div>
+    </div>
+    <!-- > > > > > > > > Основание отпуска -->
+    <!-- < < < < < < < < Переадресовка -->
+    <div>
+        <div>
+            <div
+                style="
+                    color: <?= $params['text_color'] ?>;
+                    display: block;
+                    float: left;
+                    width: 1.80cm;
+                "
+            >
+                Переадресовка
+            </div>
+
+            <div
+                style="
+                    color: <?= $params['text_color'] ?>;
+                    display: block;
+                    float: left;
+                    width: 17.695cm;
+                    margin-left: 0.1cm;
+                    border-bottom: 1px solid <?= $params['text_color'] ?>;
+                ">
+                <?= $params['pereadresovka'] ?>
+            </div>
+        </div>
+        <div>
+            <div
+                style="
+                    color: <?= $params['text_color'] ?>;
+                    display: block;
+                    float: left;
+                    width: 1.80cm;
+                    text-align: center;
+                    font-style: italic;
+                    font-size: <?= $italic_size ?>;
+                "
+            >
+                &nbsp;
+            </div>
+            <div
+                style="
+                    color: <?= $params['text_color'] ?>;
+                    display: block;
+                    float: left;
+                    width: 17.695cm;
+                    margin-left: 0.1cm;
+                    text-align: center;
+                    font-style: italic;
+                    font-size: <?= $italic_size ?>;
+                "
+            >
+                (новый пункт разгрузки, фамилия, инициалы, подпись лица, принявшего решение о переадресовке)
+            </div>
+        </div>
+    </div>
+    <!-- > > > > > > > > Переадресовка -->
 </div>

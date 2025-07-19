@@ -26,7 +26,7 @@ try {
 
     $html = GetTtnHtml::getHtml([
         'text_color' => $_POST['text_color'],
-        'ttn_date' => TtnDateHelper::getTtnDate_byIsoDate($_POST['ttn_date']),
+        'ttn_date_string' => GetTtnHtml::getParamOrOnNotIssetReturnEmptySymbol('ttn_date_string'),
         'unp_gruzootpravitel' => $_POST['unp_gruzootpravitel'],
         'unp_gruzopoluchatel' => $_POST['unp_gruzopoluchatel'],
         'unp_zakazchik_auto' => $_POST['unp_zakazchik_auto'],
@@ -36,6 +36,10 @@ try {
         'voditel' => GetTtnHtml::getParamOrOnNotIssetReturnEmptySymbol('voditel'),
         'name_1_zakazchik' => GetTtnHtml::getParamOrOnNotIssetReturnEmptySymbol('name_1_zakazchik'),
         'name_2_zakazchik' => GetTtnHtml::getParamOrOnNotIssetReturnEmptySymbol('name_2_zakazchik'),
+        'name_gruzootpravitel' => GetTtnHtml::getParamOrOnNotIssetReturnEmptySymbol('name_gruzootpravitel'),
+        'name_gruzopoluchatel' => GetTtnHtml::getParamOrOnNotIssetReturnEmptySymbol('name_gruzopoluchatel'),
+        'osnovanie_otpuska' => GetTtnHtml::getParamOrOnNotIssetReturnEmptySymbol('osnovanie_otpuska'),
+        'pereadresovka' => GetTtnHtml::getParamOrOnNotIssetReturnEmptySymbol('pereadresovka'),
     ]);
     $mpdf->WriteHTML($html);
     $result_pdf_name = date('Y-m-d_H-i-s') . '_TTN.pdf';
